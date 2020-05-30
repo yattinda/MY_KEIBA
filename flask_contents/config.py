@@ -1,0 +1,4 @@
+DEBUG = True
+SQLALCHEMY_DATABASE_URL = "sqlite://flask_blog.db"
+SQLALCHEMY_TRACK_MODIFICATIONS = True
+SECRET_KEY = "secreat_key"
