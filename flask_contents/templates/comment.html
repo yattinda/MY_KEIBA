@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+  <br>
+  <div style="text-align:center">
+  <h1>{{horsedata.sign}}</h1>
+  </div>
+   <br>
+  <p> 競馬場　　:　{{horsedata.racecourse}}</p> <br>
+  <p> 開催日時　:　{{horsedata.racedate}}</p> <br>
+  <p> レース順　:　{{horsedata.racenum}}</p> <br>
+  <p> 芝ダート　:　{{horsedata.coursetype}}</p> <br>
+  <p> 距離　　　:　{{horsedata.distance}}</p> <br>
+  <p> 条件　　　:　{{horsedata.condition}}</p> <br>
+
+  <p>コメント</p><br><br>
+  {{horsedata.comment}}
+
+
+{% endblock %}

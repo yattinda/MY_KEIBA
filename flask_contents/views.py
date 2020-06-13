@@ -18,6 +18,7 @@ def plus():
         racedate = request.form["racedate"],
         racenum = request.form["racenum"],
         horsename = request.form["horsename"],
+        coursetype = request.form["coursetype"],
         distance = request.form["distance"],
         condition = request.form["condition"],
         sign = request.form["sign"],
@@ -39,3 +40,13 @@ def render_find():
 @app.route('/index')
 def render_index():
     return render_template("index.html")
+
+@app.route('/sarch',methods=["GET","POST"])
+def sarch():
+    horsedata = Entry.query.filter_by(horsename = request.form["want_horsename"]).all()
+    return render_template("/history.html",horsedata = horsedata)
+
+@app.route('/show_comment/<int:id>', methods=["GET"])
+def show_comment(id):
+    horsedata = Entry.query.get(id)
+    return render_template("/comment.html",horsedata = horsedata)
