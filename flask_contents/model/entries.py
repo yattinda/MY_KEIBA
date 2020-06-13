@@ -6,10 +6,10 @@ class Entry(db.Model):
     racecourse = db.Column(db.String)
     racedate = db.Column(db.String)
     racenum = db.Column(db.Integer)
-    horsename = db.Column(db.String)
+    horsename = db.Column(db.String,)
     distance = db.Column(db.Integer)
     condition = db.Column(db.String)
-    sign = db.Column(db.String)
+    sign = db.Column(db.String, )
     comment = db.Column(db.Text)
 
     def __init__(self, racecourse = None, racedate = None, racenum = None, horsename = None, distance = None, condition = None, sign = None, comment = None):

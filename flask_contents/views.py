@@ -10,24 +10,27 @@ from flask_contents.model.entries import Entry
 def show_index():
     return render_template("index.html")
 
-@app.route('/plus',methods=["POST"])
+@app.route('/plus',methods=["GET","POST"])
 def plus():
-    entry = Entry(
-    racecourse = request.form["racecourse"],
-    racedate = request.form["racedate"],
-    racenum = request.form["racenum"],
-    horsename = request.form["horsename"],
-    distance = request.form["distance"],
-    condition = request.form["condition"],
-    sign = request.form["sign"],
-    comment = request.form["comment"],
-    )
-    db.session.add(entry)
-    db.session.commit()
-    flash("new data")
-    return redirect("index.html")
+    try:
+        entry = Entry(
+        racecourse = request.form["racecourse"],
+        racedate = request.form["racedate"],
+        racenum = request.form["racenum"],
+        horsename = request.form["horsename"],
+        distance = request.form["distance"],
+        condition = request.form["condition"],
+        sign = request.form["sign"],
+        comment = request.form["comment"],
+        )
+        db.session.add(entry)
+        db.session.commit()
+        flash("register new data")
+        return redirect("/")
 
-
+    except:
+        flash("error! :Some forms are not filled")
+        return redirect("/")
 
 @app.route('/find')
 def render_find():
