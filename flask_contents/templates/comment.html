@@ -1,19 +1,62 @@
 {% extends "layout.html" %}
 {% block body %}
-  <br>
-  <div style="text-align:center">
-  <h1>{{horsedata.sign}}</h1>
-  </div>
-   <br>
-  <p> 競馬場　　:　{{horsedata.racecourse}}</p> <br>
-  <p> 開催日時　:　{{horsedata.racedate}}</p> <br>
-  <p> レース順　:　{{horsedata.racenum}}</p> <br>
-  <p> 芝ダート　:　{{horsedata.coursetype}}</p> <br>
-  <p> 距離　　　:　{{horsedata.distance}}</p> <br>
-  <p> 条件　　　:　{{horsedata.condition}}</p> <br>
 
-  <p>コメント</p><br><br>
-  {{horsedata.comment}}
+<br>
+<div style="text-align:center">
+  <h1>{{horsedata.sign}}</h1>
+</div>
+<table class="table table-striped">
+  <tr>
+    <td>競馬場{{horsedata.racecourse}}</td>
+    <td>競馬場</td>
+  </tr>
+  <tr>
+    <td>開催日時</td>
+    <td>{{horsedata.racedate}}</td>
+  </tr>
+  <tr>
+    <td>レース順</td>
+    <td>{{horsedata.racenum}}R</td>
+  </tr>
+  <tr>
+    <td>芝ダート</td>
+    <td>{{horsedata.coursetype}}</td>
+  </tr>
+  <tr>
+    <td>距離</td>
+    <td>{{horsedata.distance}}m</td>
+  </tr>
+  <tr>
+    <td>条件</td>
+    <td>{{horsedata.condition}}</td>
+  </tr>
+</table>
+<p>コメント</p><br><br>
+{{horsedata.comment}}
+<br><br>
+
+<div class="btn-group">
+
+  <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#delmodal">Delete</button>
+
+  <form action="{{ url_for('delete', id = horsedata.id)}}" method="post">
+    <div class="modal fade" id="delmodal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Realy Delete?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
 
 
 {% endblock %}

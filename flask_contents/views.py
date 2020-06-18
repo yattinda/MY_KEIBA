@@ -44,9 +44,20 @@ def render_index():
 @app.route('/sarch',methods=["GET","POST"])
 def sarch():
     horsedata = Entry.query.filter_by(horsename = request.form["want_horsename"]).all()
+    horsedata.reverse()
     return render_template("/history.html",horsedata = horsedata)
 
 @app.route('/show_comment/<int:id>', methods=["GET"])
 def show_comment(id):
     horsedata = Entry.query.get(id)
     return render_template("/comment.html",horsedata = horsedata)
+
+@app.route('/delete/<int:id>', methods=["GET","POST"])
+def delete(id):
+    delete_data = Entry.query.get(id)
+    delete_horsename = delete_data.horsename
+    db.session.delete(delete_data)
+    db.session.commit()
+    horsedata = Entry.query.filter_by(horsename = delete_horsename).all()
+    horsedata.reverse()
+    return render_template("/history.html",horsedata = horsedata)

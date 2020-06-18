@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
-<form action= "/sarch" method = post>
-  <div class = "find_form">
-    <label for = "want_horsename">馬名 </label>
-    <input type = "text" name = "want_horsename" id = "want_horsename">
+<form action="/sarch" method=post>
+  <div class="find_form">
+    <label for="want_horsename">馬名 </label>
+    <input type="text" name="want_horsename" id="want_horsename">
     <br>
   </div>
 
-  <button type = "submit" class = "want_horsename">検索</button>
+  <button type="submit" class="btn btn-primary">検索</button>
 
-{% endblock %}
+  {% endblock %}

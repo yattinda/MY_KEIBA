@@ -1,96 +1,105 @@
 {% extends "layout.html" %}
 {% block body %}
 {% for message in get_flashed_messages() %}
-  <div class="alert alert-info" role = "alert">
+<div class="alert alert-info" role="alert">
   {{ message }}
-  </div>
+</div>
 {% endfor %}
-<form action="/plus" method=post class = plus>
-  <div class="register_form">
-    <p>
-    競馬場名 <select name="racecourse">
-    <option value="小倉">小倉</option>
-    <option value="府中">府中</option>
-    <option value="京都">京都</option>
-    <option value="阪神">阪神</option>
-    <option value="中山">中山</option>
-    <option value="札幌">札幌</option>
-    <option value="函館">函館</option>
-    <option value="新潟">新潟</option>
-    <option value="佐賀">佐賀</option>
+<form action="/plus" method=post class=plus>
+  <div class="form-group">
+    <label for="racecourse-label">競馬場名</label>
+    <select class="form-control" name="racecourse">
+      <option value="小倉">小倉</option>
+      <option value="府中">府中</option>
+      <option value="京都">京都</option>
+      <option value="阪神">阪神</option>
+      <option value="中山">中山</option>
+      <option value="札幌">札幌</option>
+      <option value="函館">函館</option>
+      <option value="新潟">新潟</option>
+      <option value="佐賀">佐賀</option>
     </select>
-    </p>
+  </div>
 
-    <br>
+  <br>
+  <div class="form-group">
+    <label for="racedate-label">開催日時 </label>
+    <input type="date" name="racedate" id="racedate" class="form-control">
+  </div>
+  <br><br>
 
-    <label for="racedate">開催日時 </label>
-    <input type="date" name="racedate" id="racedate"></input>
-    <br><br>
-
-    <p>
-    レース順 <select name = "racenum">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    <option value=5>5</option>
-    <option value=6>6</option>
-    <option value=7>7</option>
-    <option value=8>8</option>
-    <option value=9>9</option>
-    <option value=10>10</option>
-    <option value=11>11</option>
-    <option value=12>12</option>
-    </select></p>
-    <br>
-
-    <label for="horsename">馬名 </label>
-    <input type="text" name="horsename" id="horsename">
-    <br><br>
-
-    <p>
-    芝 or ダート <select name = "coursetype">
-    <option value = "芝">芝</option>
-    <option value="ダート">ダート</option>
+  <div class="form-group">
+    <label for="racenum-label">レース番号</label>
+    <select class="form-control" name="racenum">
+      <option value=1>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      <option value=5>5</option>
+      <option value=6>6</option>
+      <option value=7>7</option>
+      <option value=8>8</option>
+      <option value=9>9</option>
+      <option value=10>10</option>
+      <option value=11>11</option>
+      <option value=12>12</option>
     </select>
-    </p>
-    <br>
+  </div>
 
-    <label for="distance">距離 </label>
-    <input type="text" name="distance" id="distance">
-    <br><br>
+  <div class="form-group">
+    <label for="horsename-label">馬名 </label>
+    <input type="text" name="horsename" id="horsename" class="form-control">
+  </div>
+  <br><br>
 
-    <p>
-    条件 <select name = "condition">
-    <option value="新馬・未勝利"> 新馬・未勝利</option>
-    <option value="500">500万下</option>
-    <option value="1000">1000万下</option>
-    <option value="1600">1600万下</option>
-    <option value="op"> OP</option>
-    <option value="G3"> G3</option>
-    <option value="G2"> G2</option>
-    <option value="G1"> G1</option>
+  <div class="form-group">
+    <label for="coursetype-label">芝orダート</label>
+    <select class="form-control" name="coursetype">
+      <option value="芝">芝</option>
+      <option value="ダート">ダート</option>
     </select>
-    </p>
-    <br>
+  </div>
+  <br>
 
-    <p>
-    印 <select name="sign">
-    <option value="◎"> ◎</option>
-    <option value="◯"> ◯</option>
-    <option value="▲"> ▲</option>
-    <option value="△"> △</option>
-    <option value="×"> ×</option>
-    <option value="☆"> ☆</option>
-    <option value="注"> 注</option>
+  <div class="form-group">
+    <label for="distance-label">距離 </label>
+    <input type="text" name="distance" id="distance" class="form-control">
+  </div>
+  <br><br>
+
+  <div class="form-group">
+    <label for="condition-label">条件</label>
+    <select class="form-control" name="condition">
+      <option value="新馬・未勝利"> 新馬・未勝利</option>
+      <option value="500">500万下</option>
+      <option value="1000">1000万下</option>
+      <option value="1600">1600万下</option>
+      <option value="op"> OP</option>
+      <option value="G3"> G3</option>
+      <option value="G2"> G2</option>
+      <option value="G1"> G1</option>
     </select>
-    </p>
-    <br>
+  </div>
+  <br>
 
+  <div class="form-group">
+    <label for="sign-label">印</label>
+    <select class="form-control" name="sign">
+      <option value="◎"> ◎</option>
+      <option value="◯"> ◯</option>
+      <option value="▲"> ▲</option>
+      <option value="△"> △</option>
+      <option value="×"> ×</option>
+      <option value="☆"> ☆</option>
+      <option value="注"> 注</option>
+    </select>
+  </div>
+  <br>
 
-    <a>コメント:</a><br>
-    <textarea name="comment" rows="4" cols="40"></textarea>
+  <div class="form-group">
+    <label for="comment-label">コメント</label>
+    <textarea name="comment" class="form-control" rows="4" cols="40"></textarea>
     <br><br>
-    <button type="submit" onClick="alert(登録完了);">登録</button>
+    <button type="submit" class="btn btn-primary">登録</button>
 </form>
 {% endblock %}

@@ -1,23 +1,43 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<ul class = "list-group list-group-flush">
-{% for horsedata in horsedata %}
-<div class = "card">
-<div class = "card-body">
-  <h4 class = "card-sign">{{horsedata.sign}}</h4>
-  <p> 競馬場　　:　{{horsedata.racecourse}}競馬場</p>
-  <p> 開催日時　:　{{horsedata.racedate}}</p>
-  <p> レース順　:　{{horsedata.racenum}}R</p>
-  <p> 芝ダート　:　{{horsedata.coursetype}}</p>
-  <p> 距離　　　:　{{horsedata.distance}}m</p>
-  <p> 条件　　　:　{{horsedata.condition}}</p>
-  <a href = "{{ url_for('show_comment', id = horsedata.id) }}" class="card-link">予想コメント</a>
-</div>
-</div>
-{% else %}
-  NO data
-{% endfor %}
+<ul class="list-group list-group-flush">
+  {% for horsedata in horsedata %}
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-sign">{{horsedata.sign}}</h4>
+      <table class="table table-striped">
+        <tr>
+          <td>競馬場{{horsedata.racecourse}}</td>
+          <td>競馬場</td>
+        </tr>
+        <tr>
+          <td>開催日時</td>
+          <td>{{horsedata.racedate}}</td>
+        </tr>
+        <tr>
+          <td>レース順</td>
+          <td>{{horsedata.racenum}}R</td>
+        </tr>
+        <tr>
+          <td>芝ダート</td>
+          <td>{{horsedata.coursetype}}</td>
+        </tr>
+        <tr>
+          <td>距離</td>
+          <td>{{horsedata.distance}}m</td>
+        </tr>
+        <tr>
+          <td>条件</td>
+          <td>{{horsedata.condition}}</td>
+        </tr>
+      </table>
+      <a href="{{ url_for('show_comment', id = horsedata.id) }}" class="card-link">予想コメント</a>
+    </div>
+  </div>
+  {% else %}
+  No data
+  {% endfor %}
 </ul>
 
 {% endblock %}
