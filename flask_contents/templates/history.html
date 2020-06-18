@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 
+<br><h3>{{horsename}}</h3><br>
 <ul class="list-group list-group-flush">
   {% for horsedata in horsedata %}
   <div class="card">
@@ -31,10 +32,14 @@
           <td>条件</td>
           <td>{{horsedata.condition}}</td>
         </tr>
+        <tr>
+          <td>馬場状態</td>
+          <td>{{horsedata.groundcondition}}</td>
+        </tr>
       </table>
       <a href="{{ url_for('show_comment', id = horsedata.id) }}" class="card-link">予想コメント</a>
     </div>
-  </div>
+  </div><br>
   {% else %}
   No data
   {% endfor %}

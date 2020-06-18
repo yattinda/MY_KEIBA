@@ -21,6 +21,7 @@ def plus():
         coursetype = request.form["coursetype"],
         distance = request.form["distance"],
         condition = request.form["condition"],
+        groundcondition =request.form["groundcondition"],
         sign = request.form["sign"],
         comment = request.form["comment"],
         )
@@ -45,7 +46,8 @@ def render_index():
 def sarch():
     horsedata = Entry.query.filter_by(horsename = request.form["want_horsename"]).all()
     horsedata.reverse()
-    return render_template("/history.html",horsedata = horsedata)
+    horsename = request.form["want_horsename"]
+    return render_template("/history.html",horsedata = horsedata, horsename = horsename)
 
 @app.route('/show_comment/<int:id>', methods=["GET"])
 def show_comment(id):
